@@ -10,7 +10,8 @@ var marked = null;
 
 var mcanvas = hitman.init( {
     canvas: canvas, 
-    continuous: true
+    continuous: true,
+    fixalpha: true
 });
 
 var currentHitObject;

@@ -9,7 +9,8 @@ var actors = [];
 var marked = null;
 
 var mcanvas = hitman.init( {
-    canvas: canvas
+    canvas: canvas,
+    fixalpha: true
 });
 
 var currentHitObject;
