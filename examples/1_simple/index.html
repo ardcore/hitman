@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title></title>
+  
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="../_common/style/style.css">
+
+    <script src="../../hitman.js"></script>
+    <script src="../../hasher.js"></script>
+    <script src="../../colorutils.js"></script>
+
+    <script src="../_common/tester.js"></script>
+    <script src="../_common/testermove.js"></script>
+
+
+  </head>
+  <body>
+
+<div id="preloader">
+    <img src="../_common/images/mario.png" />
+    <img src="../_common/images/luigi.png" />
+    <img src="../_common/images/xwing.gif" />
+</div>
+<div id="test">
+    <canvas id="game-canvas" width="600" height="600"></canvas>
+    <div id="debug"></div>
+</div>
+<p class="desc">
+    click to trigger the collision test.
+    normal mode: hitmap area grabbed from bounding boxes and rendered while the collision check occurs. performant if you're not doing the collision detection too often.
+</p>
+
+<script src="game.js"></script>
+
+<ul class="controls">
+    <li><a id="hitmap" href="#">toggle debug</a></li>
+</ul>
+
+
+<script>
+document.querySelector("#hitmap").addEventListener("click", function(e) {
+    e.preventDefault();
+    var t = document.querySelector("#hitmap-canvas");
+    var s;
+    if (t) {
+        s = t.style.display;
+        if (!s || s == "none") {
+            t.style.display = "block"
+        } else {
+            t.style.display = "none"
+        }
+    }
+}, false)
+</script>
+  </body>
+</html>

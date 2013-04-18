@@ -1,0 +1,62 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #0B486B;
+    padding: 0;
+    margin: 0;
+}
+canvas {
+    background: white;
+    display: block;
+    padding: 0px;
+    float: left;
+}
+
+#preloader { 
+    display: none;
+}
+
+.controls {
+    background: #fff;
+    width: auto;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.controls a {
+    padding: 10px;
+    display: block;
+    color: black;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-top: 0;
+    border-right: 0;
+}
+
+#test {
+    overflow: hidden;
+    position: relative;
+}
+
+#debug {
+    width: auto;
+    display: inline-block;
+    border-left: 1px solid red;
+}
+
+#hitmap-canvas {
+    background: #ff0000;
+    float: none;
+    display: none;
+}
+
+.desc {
+    width: 520px;
+    padding: 20px 40px;
+    color: #ccc;
+}
