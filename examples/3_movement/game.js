@@ -1,4 +1,14 @@
 
+// shim layer with setTimeout fallback
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
 var canvas = document.querySelector("#game-canvas");    
 var ctx = canvas.getContext("2d");
 var cheight = canvas.height;
@@ -18,10 +28,31 @@ var currentHitObject;
 
 window.addEventListener("load", runTest);
 
-canvas.addEventListener("mousemove", function(event) {
-    var bboxes = getCollidingBoundingBoxes(actors, event.clientX, event.clientY);
+var mousePos = {
+    x: null,
+    y: null
+};
 
-    var object = hitman.getObjectByPos(event.clientX, event.clientY, bboxes);
+canvas.addEventListener("mousemove", function(event) {
+    mousePos.x = event.clientX;
+    mousePos.y = event.clientY;
+}, false);
+
+
+(function animloop(){
+  requestAnimFrame(animloop);
+  preformCheck();
+})();
+
+function preformCheck() {
+
+    if ( mousePos.x === null || mousePos.y === null) {
+        return;
+    }
+
+    var bboxes = getCollidingBoundingBoxes(actors, mousePos.x, mousePos.y);
+
+    var object = hitman.getObjectByPos(mousePos.x, mousePos.y, bboxes);
     
     if (marked && object !== marked) {
         marked.testUnmark();
@@ -34,11 +65,11 @@ canvas.addEventListener("mousemove", function(event) {
     }
 
     currentHitObject = {
-        x: event.clientX,
-        y: event.clientY
+        x: mousePos.x,
+        y: mousePos.y
     }
-
-}, false);
+ 
+};
 
 function runTest() {
 
