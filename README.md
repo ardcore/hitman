@@ -2,6 +2,10 @@
 
 module providing API for pixel-perfect collision detection using hitmap/color map.
 
+## Examples: 
+
+http://dev.wildcard.pl/hitman/
+
 ## Structure
 
 it comes in 3 parts: *hitman.js*, which is the module itself, *hasher.js*, which is a module used to assign unique colors to objects (and can be used separately or replaced by something else), and *colorutils.js* - set of helper function to convert colors between formats, required by both hitman and hasher. they all register to the hitman's namespace.
